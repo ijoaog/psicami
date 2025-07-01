@@ -2,13 +2,18 @@
 FROM node:18 AS builder
 WORKDIR /app
 
-# Copia os arquivos de dependência e instala
-COPY package*.json ./
-RUN npm install
+# Instala pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
 
-# Copia o restante do projeto e gera o build
+# Copia arquivos de dependência
+COPY package.json pnpm-lock.yaml ./
+
+# Instala dependências
+RUN pnpm install
+
+# Copia o restante do código e roda o build
 COPY . .
-RUN npm run build
+RUN pnpm build
 
 # Etapa 2: Runtime
 FROM node:18-alpine AS runner
@@ -16,6 +21,9 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 ENV PORT=3001
+
+# Instala pnpm no ambiente de produção
+RUN corepack enable && corepack prepare pnpm@latest --activate
 
 # Copia apenas as dependências de produção
 COPY --from=builder /app/node_modules ./node_modules
@@ -30,4 +38,5 @@ COPY --from=builder /app/postcss.config.mjs ./postcss.config.mjs
 COPY --from=builder /app/tailwind.config.ts ./tailwind.config.ts
 
 EXPOSE 3001
-CMD ["npm", "start"]
+
+CMD ["pnpm", "start"]
