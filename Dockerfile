@@ -19,22 +19,20 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3001
 
-# Instala apenas as dependências de produção (reduz o tamanho final)
+# Instala apenas dependências de produção
 COPY package*.json ./
 RUN npm install --omit=dev
 
-# Copia os artefatos gerados no build e arquivos essenciais
+# Copia artefatos do build e arquivos essenciais
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/next.config.mjs ./next.config.mjs
+COPY --from=builder /app/styles ./styles
+COPY --from=builder /app/postcss.config.mjs ./postcss.config.mjs
+COPY --from=builder /app/tailwind.config.ts ./tailwind.config.ts
 
-# Adicionalmente, se você usa Tailwind, PostCSS ou arquivos específicos:
-# COPY --from=builder /app/postcss.config.mjs ./postcss.config.mjs
-# COPY --from=builder /app/tailwind.config.ts ./tailwind.config.ts
-# COPY --from=builder /app/styles ./styles
-
-# Expõe a porta da aplicação
+# Expõe a porta 3001
 EXPOSE 3001
 
-# Comando de inicialização
+# Inicializa a aplicação
 CMD ["npm", "start"]
