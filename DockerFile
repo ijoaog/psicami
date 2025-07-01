@@ -4,7 +4,7 @@ WORKDIR /app
 
 # Aproveita cache para instalar apenas se o package.json mudar
 COPY package*.json ./
-RUN npm install --force
+RUN npm install
 
 # Copia o restante da aplicação
 COPY . .
