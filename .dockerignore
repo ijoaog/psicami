@@ -1,0 +1,11 @@
+node_modules
+.next
+.git
+.vscode
+.env
+*.log
+*.md
+*.test.*
+*.spec.*
+coverage
+public/uploads

@@ -2,34 +2,33 @@
 FROM node:18 AS builder
 WORKDIR /app
 
-# Instala pnpm
+# Ativa o pnpm
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
-# Copia arquivos de dependência
+# Copia arquivos de dependência e instala apenas o necessário
 COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
 
-# Instala dependências
-RUN pnpm install
-
-# Copia o restante do código e roda o build
+# Copia o restante da aplicação
 COPY . .
+
+# Desativa sourcemaps e faz o build de produção
+ENV NEXT_DISABLE_SOURCEMAPS=true
 RUN pnpm build
 
-# Etapa 2: Runtime
+# Etapa 2: Runtime (produção real)
 FROM node:18-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
 ENV PORT=3001
 
-# Instala pnpm no ambiente de produção
+# Ativa o pnpm no ambiente leve
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
-# Copia apenas as dependências de produção
+# Copia apenas o necessário do builder
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./
-
-# Copia artefatos de build e arquivos essenciais
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/next.config.mjs ./next.config.mjs
