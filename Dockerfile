@@ -1,31 +1,35 @@
-# Etapa 1: Base - Define imagem base com Node.js e pnpm
-FROM node:18-alpine AS base
+# Etapa 1: Build
+FROM node:18-alpine AS builder
 WORKDIR /app
-RUN corepack enable && corepack prepare pnpm@latest --activate
 
-# Etapa 2: Dependencies - Instala dependências com cache eficiente
-FROM base AS deps
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
+# Melhora a compatibilidade e reduz imagem
+RUN apk add --no-cache libc6-compat
 
-# Etapa 3: Builder - Copia o restante do app e roda o build
-FROM base AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+# Copia e instala dependências
+COPY package*.json ./
+RUN npm ci --prefer-offline --no-audit
+
+# Copia todo o projeto
 COPY . .
-ENV NEXT_DISABLE_SOURCEMAPS=true
-RUN pnpm build
 
-# Etapa 4: Runner - Imagem final leve para produção
+# Gera o build da aplicação
+ENV NEXT_DISABLE_SOURCEMAPS=true
+RUN npm run build
+
+# Etapa 2: Runtime otimizada
 FROM node:18-alpine AS runner
 WORKDIR /app
+
 ENV NODE_ENV=production
 ENV PORT=3001
 
-# Copia a build standalone
-COPY --from=builder /app/.next/standalone ./
+# Copia arquivos necessários para rodar o app
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/package*.json ./
 
-EXPOSE 3001
-CMD ["node", "server.js"]
+# Instala somente dependências de produção
+RUN npm ci --omit=dev --prefer-offline --no-audit
+
+EXPOSE 3000
+CMD ["npm", "start"]
