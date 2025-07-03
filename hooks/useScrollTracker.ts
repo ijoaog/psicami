@@ -1,4 +1,5 @@
-// lib/hooks/useScrollTracker.ts
+"use client"
+
 import { useEffect } from "react"
 
 export function useTrackFooterView() {
