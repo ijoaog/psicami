@@ -13,7 +13,6 @@ import {
   Users,
   Brain,
   Target,
-  Menu,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
