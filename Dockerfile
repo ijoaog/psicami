@@ -5,10 +5,11 @@ WORKDIR /app
 # Ativa pnpm
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
-# Copia só os arquivos de dependência para aproveitar cache
-COPY package.json pnpm-lock.yaml ./
+# Copia mirror de registry para evitar timeout
+COPY .npmrc ./
 
-# Instala dependências
+# Copia dependências e instala com cache
+COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile
 
 # Copia o resto da aplicação
@@ -25,10 +26,8 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3001
 
-# Ativa pnpm
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
-# Copia o mínimo necessário para rodar
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./
 COPY --from=builder /app/.next ./.next
