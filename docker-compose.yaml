@@ -1,16 +1,15 @@
 services:
   psicami:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: psicami
-    expose:
-      - "3001"
+    ports:
+      - "3001:3001"
     environment:
       - NODE_ENV=production
       - PORT=3001
     networks:
-      - web
+      web:
+        external: true
     restart: unless-stopped
-
-networks:
-  web:
-    external: true
