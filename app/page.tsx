@@ -48,7 +48,7 @@ export default function Home() {
               </Link>
               <Button asChild>
                 <Link
-                  href="https://wa.me/5541992333116?text=Olá, quero começar minha jornada! Gostaria de agendar uma consulta."
+                  href="https://wa.me/5541985199520?text=Olá, quero começar minha jornada! Gostaria de agendar uma consulta."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-row items-center gap-2"
@@ -92,7 +92,7 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button size="lg" asChild className="btn-primary flex flex-row">
                     <Link
-                      href="https://wa.me/5541992333116?text=Olá, quero começar minha jornada! Gostaria de agendar uma consulta."
+                      href="https://wa.me/5541985199520?text=Olá, quero começar minha jornada! Gostaria de agendar uma consulta."
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex flex-row items-center gap-2"
@@ -361,7 +361,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" variant="secondary" asChild className="bg-white text-green-600 hover:bg-gray-100">
                   <Link
-                    href="https://wa.me/5541992333116?text=Olá, quero começar minha jornada! Gostaria de agendar uma consulta."
+                    href="https://wa.me/5541985199520?text=Olá, quero começar minha jornada! Gostaria de agendar uma consulta."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex flex-row items-center gap-2"
@@ -412,18 +412,19 @@ export default function Home() {
                   icon: MessageCircle,
                   title: "WhatsApp",
                   description: "Resposta rápida e direta",
-                  contact: "(41) 9 92333-1116",
+                  contact: "(41) 98519‑9520",
                   action: "Enviar mensagem",
-                  href: "https://wa.me/5541992333116?text=Olá, quero começar minha jornada! Gostaria de agendar uma consulta.",
+                  href: "https://wa.me/5541985199520?text=Olá, quero começar minha jornada! Gostaria de agendar uma consulta.",
                   primary: true,
                 },
                 {
+
                   icon: Phone,
                   title: "Telefone",
                   description: "Atendimento personalizado",
-                  contact: "(41) 9 92333-1116",
+                  contact: "(41) 98519‑9520",
                   action: "Ligar agora",
-                  href: "tel:+5541992333116",
+                  href: "tel:+5541985199520",
                 },
                 {
                   icon: Instagram,
@@ -490,7 +491,7 @@ export default function Home() {
                 <div className="space-y-2 text-gray-400">
                   <div className="flex items-center gap-2">
                     <Phone className="w-4 h-4" />
-                    <span>(41) 9 92333-1116</span>
+                    <span>(41) 9 8519-9520</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Instagram className="w-4 h-4" />

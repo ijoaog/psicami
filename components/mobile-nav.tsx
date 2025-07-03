@@ -49,7 +49,7 @@ export function MobileNav() {
           <div className="py-6 border-t border-secondary-200">
             <Button asChild className="w-full" onClick={() => setOpen(false)}>
               <Link
-                href="https://wa.me/554192333116?text=Olá! Gostaria de agendar uma consulta."
+                href="https://wa.me/5541985199520?text=Olá! Gostaria de agendar uma consulta."
                 target="_blank"
                 rel="noopener noreferrer"
               >
