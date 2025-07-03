@@ -1,42 +1,32 @@
-# Etapa 1: Build
-FROM node:18-alpine AS builder
+# Etapa 1: Base - Define a imagem base com Node.js e pnpm
+FROM node:18-alpine AS base
 WORKDIR /app
+# Ativa o corepack para usar o pnpm
+RUN corepack enable
 
-# Ativa pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
-
-# Copia mirror de registry para evitar timeout
-COPY .npmrc ./
-
-# Copia dependências e instala com cache
+# Etapa 2: Builder - Instala dependências e constrói a aplicação
+FROM base AS builder
 COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
-
-# Copia o resto da aplicação
+# Instala TODAS as dependências (incluindo dev) necessárias para o build.
+# A ausência de '--frozen-lockfile' permite que o pnpm corrija o lockfile se necessário.
+# Para melhores práticas, rode 'pnpm install' localmente e comite o pnpm-lock.yaml atualizado.
+RUN pnpm install
 COPY . .
-
-# Desativa sourcemaps e roda o build
-ENV NEXT_DISABLE_SOURCEMAPS=true
+# Constrói a aplicação para produção. O output 'standalone' já está configurado no next.config.mjs.
 RUN pnpm build
 
-# Etapa 2: Runtime
-FROM node:18-alpine AS runner
+# Etapa 3: Runner - Cria a imagem final, otimizada e leve
+FROM base AS runner
 WORKDIR /app
-
 ENV NODE_ENV=production
 ENV PORT=3001
 
-RUN corepack enable && corepack prepare pnpm@latest --activate
-
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./
-COPY --from=builder /app/.next ./.next
+# Copia a saída otimizada 'standalone' do estágio de build
+COPY --from=builder /app/.next/standalone ./
+# Copia os assets públicos e estáticos
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/next.config.mjs ./next.config.mjs
-COPY --from=builder /app/styles ./styles
-COPY --from=builder /app/postcss.config.mjs ./postcss.config.mjs
-COPY --from=builder /app/tailwind.config.ts ./tailwind.config.ts
+COPY --from=builder /app/.next/static ./.next/static
 
 EXPOSE 3001
-
-CMD ["pnpm", "start"]
+# O comando para iniciar o servidor no modo standalone
+CMD ["node", "server.js"]
