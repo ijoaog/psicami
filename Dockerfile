@@ -1,45 +1,35 @@
+# Etapa 1: Build
 FROM node:18-alpine AS builder
-
 WORKDIR /app
 
-# Instala compatibilidade nativa para algumas libs Node
+# Melhora a compatibilidade e reduz imagem
 RUN apk add --no-cache libc6-compat
 
-# Copia apenas arquivos de dependência para otimizar cache
-COPY package.json package-lock.json tsconfig.json ./
+# Copia e instala dependências
+COPY package*.json ./
+RUN npm ci --prefer-offline --no-audit
 
-# Usa cache de dependências com BuildKit
-RUN --mount=type=cache,target=/root/.npm \
-    npm ci --omit=dev
-
-# Copia restante do projeto
+# Copia todo o projeto
 COPY . .
 
-# Gera build otimizada
+# Gera o build da aplicação
+ENV NEXT_DISABLE_SOURCEMAPS=true
 RUN npm run build
 
-# Etapa 2: Runtime enxuto e seguro
+# Etapa 2: Runtime otimizada
 FROM node:18-alpine AS runner
-
 WORKDIR /app
 
-# Cria usuário não-root
-RUN addgroup --system --gid 1001 nodejs && \
-    adduser --system --uid 1001 nextjs
-
-# Copia somente os arquivos essenciais da build
-COPY --from=builder --chown=nextjs:nodejs /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-# Usa usuário seguro
-USER nextjs
-
-# Define variáveis de ambiente de runtime
 ENV NODE_ENV=production
 ENV PORT=3001
 
-EXPOSE 3001
+# Copia arquivos necessários para rodar o app
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/package*.json ./
 
-# Inicia aplicação
-CMD ["node", "server.js"]
+# Instala somente dependências de produção
+RUN npm ci --omit=dev --prefer-offline --no-audit
+
+EXPOSE 3001
+CMD ["npm", "start"]
