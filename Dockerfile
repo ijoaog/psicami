@@ -1,32 +1,34 @@
 # Etapa 1: Build
-FROM node:18 AS builder
+FROM node:18-alpine AS builder
 WORKDIR /app
 
-# Ativa o pnpm
+# Ativa pnpm
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
-# Copia arquivos de dependência e instala apenas o necessário
+# Copia só os arquivos de dependência para aproveitar cache
 COPY package.json pnpm-lock.yaml ./
+
+# Instala dependências
 RUN pnpm install --frozen-lockfile
 
-# Copia o restante da aplicação
+# Copia o resto da aplicação
 COPY . .
 
-# Desativa sourcemaps e faz o build de produção
+# Desativa sourcemaps e roda o build
 ENV NEXT_DISABLE_SOURCEMAPS=true
 RUN pnpm build
 
-# Etapa 2: Runtime (produção real)
+# Etapa 2: Runtime
 FROM node:18-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
 ENV PORT=3001
 
-# Ativa o pnpm no ambiente leve
+# Ativa pnpm
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
-# Copia apenas o necessário do builder
+# Copia o mínimo necessário para rodar
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./
 COPY --from=builder /app/.next ./.next
