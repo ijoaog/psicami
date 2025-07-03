@@ -40,7 +40,6 @@ EXPOSE 3001
 
 # Variáveis de ambiente
 ENV PORT=3001
-ENV HOSTNAME=0.0.0.0
 
 # Comando final
 CMD ["node", "server.js"]
