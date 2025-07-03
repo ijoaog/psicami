@@ -6,10 +6,14 @@ services:
     container_name: psicami
     ports:
       - "3001:3001"
+    restart: always
     environment:
       - NODE_ENV=production
       - PORT=3001
     networks:
-      web:
-        external: true
-    restart: unless-stopped
+      - web
+
+networks:
+  web:
+    name: web
+    external: true
