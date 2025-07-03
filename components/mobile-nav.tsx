@@ -9,29 +9,55 @@ import Link from "next/link"
 export function MobileNav() {
   const [open, setOpen] = useState(false)
 
+  const navItems = [
+    { href: "#sobre", label: "Sobre Mim" },
+    { href: "#servicos", label: "Serviços" },
+    { href: "#abordagem", label: "Abordagem" },
+    { href: "#contato", label: "Contato" },
+  ]
+
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon" className="shrink-0 lg:hidden bg-transparent">
-          <Menu className="h-5 w-5" />
+        <Button variant="ghost" size="sm" className="lg:hidden ">
+          <Menu className="h-6 w-6" />
           <span className="sr-only">Abrir menu de navegação</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="right">
-        <nav className="grid gap-6 text-lg font-medium mt-8">
-          <Link href="#" className="flex items-center gap-2 text-lg font-semibold mb-4" onClick={() => setOpen(false)}>
-            <span className="font-sora">Camila Ferreira</span>
-          </Link>
-          <Link href="#ajuda" className="text-muted-foreground hover:text-foreground" onClick={() => setOpen(false)}>
-            Como Posso Ajudar
-          </Link>
-          <Link href="#sobre" className="text-muted-foreground hover:text-foreground" onClick={() => setOpen(false)}>
-            Sobre Mim
-          </Link>
-          <Button asChild className="w-full mt-4" onClick={() => setOpen(false)}>
-            <Link href="#contato">Agendar Consulta</Link>
-          </Button>
-        </nav>
+      <SheetContent side="right" className="w-80 bg-white/95 backdrop-blur-md">
+        <div className="flex flex-col h-full">
+          <div className="flex items-center justify-between py-4 border-b border-secondary-200">
+            <span className="font-sora font-bold text-xl text-secondary-900">Menu</span>
+          </div>
+
+          <nav className="flex-1 py-8">
+            <ul className="space-y-6">
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="block text-lg font-medium text-secondary-700 hover:text-primary-600 transition-colors duration-200"
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="py-6 border-t border-secondary-200">
+            <Button asChild className="w-full" onClick={() => setOpen(false)}>
+              <Link
+                href="https://wa.me/554192333116?text=Olá! Gostaria de agendar uma consulta."
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Agendar Consulta
+              </Link>
+            </Button>
+          </div>
+        </div>
       </SheetContent>
     </Sheet>
   )

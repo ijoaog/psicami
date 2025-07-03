@@ -33,7 +33,7 @@ services:
         limits:
           memory: 256M
           cpus: "0.2"
-          
+
   nginx_no_ssl:
     image: nginx:latest
     container_name: nginx_no_ssl
@@ -51,6 +51,7 @@ services:
         limits:
           memory: 128M
           cpus: "0.1"
+
   certbot:
     image: certbot/certbot:v2.10.0
     container_name: certbot

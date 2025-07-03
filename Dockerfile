@@ -1,35 +1,42 @@
-# Etapa 1: Build
+# Build stage
 FROM node:18-alpine AS builder
+
 WORKDIR /app
 
-# Melhora a compatibilidade e reduz imagem
-RUN apk add --no-cache libc6-compat
-
-# Copia e instala dependências
+# Copy package files
 COPY package*.json ./
-RUN npm ci --prefer-offline --no-audit
 
-# Copia todo o projeto
+# Instala o pacote critters antes do build
+RUN npm install critters
+
+# Instala as dependências do projeto (produção apenas)
+RUN npm ci --omit=dev
+
+# Copy source code
 COPY . .
 
-# Gera o build da aplicação
-ENV NEXT_DISABLE_SOURCEMAPS=true
+# Build the application
 RUN npm run build
 
-# Etapa 2: Runtime otimizada
+# Production stage
 FROM node:18-alpine AS runner
+
 WORKDIR /app
 
-ENV NODE_ENV=production
-ENV PORT=3001
+# Create non-root user
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
 
-# Copia arquivos necessários para rodar o app
+# Copy built application
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/package*.json ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# Instala somente dependências de produção
-RUN npm ci --omit=dev --prefer-offline --no-audit
+USER nextjs
 
-EXPOSE 3000
-CMD ["npm", "start"]
+EXPOSE 3001
+
+ENV PORT 3001
+ENV HOSTNAME "0.0.0.0"
+
+CMD ["node", "server.js"]
