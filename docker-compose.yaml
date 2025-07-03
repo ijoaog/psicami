@@ -13,9 +13,9 @@ services:
       - app-network-landing
     restart: unless-stopped
 
-  nginx:
+  nginx_psicami_ssl:
     image: nginx:latest
-    container_name: nginx
+    container_name: nginx_psicami_ssl
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
       - ./certbot/www:/var/www/certbot
@@ -34,9 +34,9 @@ services:
           memory: 256M
           cpus: "0.2"
 
-  nginx_no_ssl:
+  nginx_psicami_no_ssl:
     image: nginx:latest
-    container_name: nginx_no_ssl
+    container_name: nginx_psicami_no_ssl
     volumes:
       - ./nginx/conf.d/no_ssl.conf:/etc/nginx/conf.d/default.conf:ro
       - ./certbot/www:/var/www/certbot
@@ -52,9 +52,9 @@ services:
           memory: 128M
           cpus: "0.1"
 
-  certbot:
+  certbot_psicami:
     image: certbot/certbot:v2.10.0
-    container_name: certbot
+    container_name: certbot_psicami
     entrypoint: ""
     command: >
       certbot certonly --webroot --webroot-path=/var/www/certbot
