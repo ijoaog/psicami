@@ -448,7 +448,7 @@ export default function Home() {
                   <p className="text-white font-medium mb-6">{contact.contact}</p>
 
                   <Button
-                    variant={contact.primary ? "primary" : "secondary"}
+                    variant={contact.primary ? "ghost" : "secondary"}
                     asChild
                     className={contact.primary ? "btn-primary" : "btn-secondary w-full"}
                   >

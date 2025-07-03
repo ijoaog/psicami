@@ -1,12 +1,46 @@
-import { dirname, resolve } from 'path';
+import { resolve } from 'path';
 import { fileURLToPath } from 'url';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  webpack(config) {
-    config.resolve.alias['@'] = resolve(__dirname, '.');
+  output: "standalone",
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ["lucide-react"],
+  },
+  images: {
+    formats: ["image/webp"],
+    unoptimized: true,
+  },
+  compress: true,
+  poweredByHeader: false,
+  generateEtags: false,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  webpack: (config, { dev, isServer }) => {
+    if (!dev && !isServer) {
+      config.optimization.splitChunks = {
+        chunks: "all",
+        cacheGroups: {
+          default: false,
+          vendors: false,
+          vendor: {
+            name: "vendor",
+            chunks: "all",
+            test: /node_modules/,
+          },
+        },
+      };
+    }
+
+    config.resolve.alias['@'] = resolve(__dirname);
+
     return config;
   },
 };
