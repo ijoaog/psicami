@@ -12,6 +12,11 @@ services:
       - PORT=3001
     networks:
       - web
+    volumes:
+      - npm-cache:/root/.npm
+
+volumes:
+  npm-cache:
 
 networks:
   web:

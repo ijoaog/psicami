@@ -1,3 +1,4 @@
+# Etapa 1: Build
 FROM node:18-alpine AS builder
 
 WORKDIR /app
@@ -8,9 +9,9 @@ RUN apk add --no-cache libc6-compat
 # Copia apenas arquivos de dependência para otimizar cache
 COPY package.json package-lock.json tsconfig.json ./
 
-# Usa cache de dependências com BuildKit
-RUN --mount=type=cache,target=/root/.npm \
-    npm ci --omit=dev
+# Usa cache compartilhado de dependências com BuildKit
+RUN --mount=type=cache,id=psicami-npm,target=/root/.npm \
+    npm ci --omit=dev --prefer-offline --no-audit
 
 # Copia restante do projeto
 COPY . .

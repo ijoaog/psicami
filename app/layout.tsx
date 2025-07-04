@@ -1,11 +1,11 @@
-import type { Metadata } from "next"
-import { Inter, Sora } from "next/font/google"
-import Script from "next/script"
-import "./globals.css"
-import { cn } from "@/lib/utils"
+import type { Metadata } from "next";
+import { Inter, Sora } from "next/font/google";
+import Script from "next/script";
+import "./globals.css";
+import { cn } from "@/lib/utils";
 
-const fontInter = Inter({ subsets: ["latin"], variable: "--font-inter" })
-const fontSora = Sora({ subsets: ["latin"], variable: "--font-sora" })
+const fontInter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const fontSora = Sora({ subsets: ["latin"], variable: "--font-sora" });
 
 export const metadata: Metadata = {
   title: "Camila Ferreira | Psicóloga Clínica",
@@ -13,12 +13,15 @@ export const metadata: Metadata = {
   keywords: "psicóloga, terapia, psicologia, ACT, TCC, Curitiba",
   authors: [{ name: "Camila Ferreira" }],
   viewport: "width=device-width, initial-scale=1",
-}
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="pt-BR" className="scroll-smooth dark" suppressHydrationWarning>
@@ -53,5 +56,5 @@ export default function RootLayout({
         {children}
       </body>
     </html>
-  )
+  );
 }
