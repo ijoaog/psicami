@@ -94,7 +94,7 @@ export default function Home() {
         </div>
       </header>
       {/* 🌿 MENU MOBILE ESTILO LINKTREE BONITO E ESCURO */}
-      <section className="md:hidden h-[90dvh] flex flex-col justify-center items-center px-6 relative bg-gradient-to-br from-primary/5 via-transparent to-primary/10">
+      <section className="md:hidden h-[90dvh] flex flex-col justify-center items-center px-6 relative bg-gradient-to-b from-emerald-950/80 via-emerald-900/60 to-green-900/40 transition-colors">
         <div className="flex flex-col items-center gap-4 w-full max-w-sm">
           <Link
             href="#sobre"
@@ -153,7 +153,7 @@ export default function Home() {
 
       <main>
         {/* Hero Section */}
-        <section className="py-20 lg:py-32 relative overflow-hidden">
+        <section className="py-20 lg:py-32 relative overflow-hidden bg-gradient-to-b from-green-900/40 via-background to-background transition-colors">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10" />
           <div className="container relative">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -229,7 +229,10 @@ export default function Home() {
         </section>
 
         {/* About */}
-        <section id="sobre" className="py-20">
+        <section
+          id="sobre"
+          className="py-20 bg-gradient-to-b from-background via-emerald-50/10 to-background transition-colors"
+        >
           <div className="container">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="relative order-last lg:order-first">
@@ -323,7 +326,10 @@ export default function Home() {
         </section>
 
         {/* Como Posso Te Ajudar */}
-        <section id="como-ajudo" className="py-20 bg-gray-900/30">
+        <section
+          id="como-ajudo"
+          className="py-20 bg-gradient-to-b from-emerald-100/5 via-emerald-900/10 to-gray-900/30 transition-colors"
+        >
           <div className="container">
             <div className="text-center mb-16">
               <div className="badge-primary mx-auto mb-4">
@@ -401,7 +407,10 @@ export default function Home() {
         </section>
 
         {/* O Que Esperar da Terapia */}
-        <section id="terapia" className="py-20">
+        <section
+          id="terapia"
+          className="py-20 bg-gradient-to-b from-gray-900/10 via-background to-background transition-colors"
+        >
           <div className="container">
             <div className="text-center mb-16">
               <div className="badge-primary mx-auto mb-4">
@@ -480,7 +489,7 @@ export default function Home() {
         </section>
 
         {/* CTA */}
-        <section className="py-20 gradient-green relative overflow-hidden">
+        <section className="py-20 bg-gradient-to-br from-green-900 via-emerald-900 to-emerald-800 relative overflow-hidden transition-colors">
           <div className="absolute inset-0 bg-black/20" />
           <div className="container text-center relative">
             <div className="max-w-3xl mx-auto space-y-8">
@@ -619,7 +628,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-950 border-t border-gray-800">
+      <footer className="bg-gradient-to-t from-emerald-950 via-gray-950 to-gray-900 border-t border-gray-800 transition-colors">
         <div className="container">
           <div className="py-12">
             <div className="grid md:grid-cols-3 gap-8">
