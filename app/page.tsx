@@ -704,6 +704,7 @@ export default function Home() {
                     href="https://www.instagram.com/psicami_/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="flex flex-row items-center gap-2"
                     onClick={() =>
                       window.gtag?.("event", "clique_instagram_footer_@_psicami", {
                         event_category: "contato",
