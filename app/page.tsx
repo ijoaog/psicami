@@ -76,7 +76,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() =>
-                    window.gtag?.("event", "clique_whatsapp", {
+                    window.gtag?.("event", "clique_whatsapp_header", {
                       event_category: "contato",
                       event_label: "Hero CTA WhatsApp",
                     })
