@@ -147,7 +147,7 @@ export default function Home() {
               href={href}
               target={external ? "_blank" : undefined}
               rel={external ? "noopener noreferrer" : undefined}
-              className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-2xl bg-gradient-to-r from-emerald-950 to-green-900 text-input font-bold shadow-lg hover:brightness-110 transition-all"
+              className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-2xl bg-primary text-input font-bold shadow-lg hover:brightness-110 transition-all"
               onClick={() => {
                 if (label.includes("WhatsApp")) {
                   window.gtag?.("event", "clique_whatsapp", {
@@ -162,7 +162,7 @@ export default function Home() {
             </Link>
           ))}
           {/* 🔽 Seta de rolagem */}
-          <div className="absolute bottom-6 animate-bounce text-green-900 z-20">
+          <div className="absolute bottom-6 animate-bounce text-primary z-20">
             <ArrowRight className="rotate-90 w-6 h-6" />
           </div>
         </div>
