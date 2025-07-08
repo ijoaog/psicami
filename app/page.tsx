@@ -177,22 +177,22 @@ export default function Home() {
                 } else if (label.includes("Contato")) {
                   window.gtag?.("event", "clique_contato_mobile", {
                     event_category: "contato",
-                    event_label: "Hero CTA Contato",
+                    event_label: "contato",
                   });
                 } else if (label.includes("Sobre")) {
                   window.gtag?.("event", "clique_sobre_mobile", {
                     event_category: "contato",
-                    event_label: "Hero CTA Sobre",
+                    event_label: "sobre",
                   });
                 } else if (label.includes("Terapia")) {
                   window.gtag?.("event", "clique_terapia_mobile", {
                     event_category: "contato",
-                    event_label: "Hero CTA Terapia",
+                    event_label: "terapia",
                   });
                 } else if (label.includes("Como Ajudo")) {
                   window.gtag?.("event", "clique_como-ajudo_mobile", {
                     event_category: "contato",
-                    event_label: "Hero CTA Como Ajudo",
+                    event_label: "como-ajudo",
                   });
                 }
               }}
