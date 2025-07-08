@@ -631,11 +631,17 @@ export default function Home() {
       <footer className="bg-gradient-to-t from-emerald-950 via-gray-950 to-gray-900 border-t border-gray-800 transition-colors">
         <div className="container">
           <div className="py-12">
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="md:col-span-2">
+            <div className="flex flex-col md:grid md:grid-cols-3 gap-8 text-center md:text-left items-center md:items-start justify-center">
+              <div className="md:col-span-2 flex flex-col items-center md:items-start text-center md:text-left">
                 <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-10 h-10 gradient-green rounded-lg flex items-center justify-center">
-                    <Heart className="w-6 h-6 text-white" />
+                  <div className="w-14 h-14">
+                    <Image
+                      src="/logo.jpeg"
+                      width={500}
+                      height={600}
+                      alt="Logo"
+                      priority
+                    />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-white font-sora">
@@ -651,7 +657,7 @@ export default function Home() {
                 <p className="text-sm text-gray-500">CRP 08/44058</p>
               </div>
 
-              <div>
+              <div className="flex flex-col items-center md:items-start">
                 <h4 className="font-semibold text-white mb-4">Contato</h4>
                 <div className="space-y-2 text-gray-400">
                   <div className="flex items-center gap-2">
@@ -667,10 +673,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="py-6 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-gray-500 text-sm">
-              © 2025 Camila Ferreira. Todos os direitos reservados.
-            </p>
+          <div className="py-6 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4 text-center">
             <Link
               href="https://www.instagram.com/psicami_/"
               target="_blank"
@@ -682,8 +685,11 @@ export default function Home() {
                 })
               }
             >
-              <Instagram className="w-5 h-5" />
+              <Instagram className="w-5 h-5 text-gray-400 hover:text-white transition-colors" />
             </Link>
+            <p className="text-gray-500 text-sm">
+              © 2025 Camila Ferreira. Todos os direitos reservados.
+            </p>
           </div>
         </div>
       </footer>
