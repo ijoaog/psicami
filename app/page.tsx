@@ -27,7 +27,7 @@ export default function Home() {
         <div className="container">
           <div className="flex items-center md:justify-between justify-center h-16 w-full">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-1 rounded-lg flex items-center justify-center">
+              <div className="w-14 h-14 rounded-lg flex items-center justify-center">
                 <Image
                   src="/logo.jpeg"
                   width={500}
