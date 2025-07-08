@@ -21,51 +21,58 @@ import { useTrackFooterView } from "@/hooks/useScrollTracker";
 export default function Home() {
   useTrackFooterView();
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b border-gray-800">
+      <header className="sticky top-0 z-50 bg-[linear-gradient(90deg,rgba(10,36,19,0.7),rgba(6,24,13,0.7),rgba(5,14,7,0.7))] backdrop-blur-sm text-white shadow-md">
         <div className="container">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center md:justify-between justify-center h-16 w-full">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 gradient-green rounded-lg flex items-center justify-center">
-                <Heart className="w-6 h-6 text-white" />
+              <div className="w-10 h-1 rounded-lg flex items-center justify-center">
+                <Image
+                  src="/logo.jpeg"
+                  width={500}
+                  height={600}
+                  alt="Logo"
+                  priority
+                />
               </div>
               <div>
-                <h1 className="text-lg font-bold text-white font-sora">
+                <h1 className="text-lg font-bold text-background font-sora">
                   Camila Ferreira
                 </h1>
-                <p className="text-sm text-gray-400">Psicóloga Clínica</p>
+                <p className="text-sm text-background/70">Psicóloga Clínica</p>
               </div>
             </div>
 
             <nav className="hidden md:flex items-center space-x-6">
               <Link
                 href="#sobre"
-                className="text-gray-300 hover:text-green-400 transition-colors font-medium"
+                className="text-foreground hover:text-primary transition-colors font-medium"
               >
                 Sobre
               </Link>
               <Link
                 href="#como-ajudo"
-                className="text-gray-300 hover:text-green-400 transition-colors font-medium"
+                className="text-foreground hover:text-primary transition-colors font-medium"
               >
                 Como Ajudo
               </Link>
               <Link
                 href="#terapia"
-                className="text-gray-300 hover:text-green-400 transition-colors font-medium"
+                className="text-foreground hover:text-primary transition-colors font-medium"
               >
                 Terapia
               </Link>
               <Link
                 href="#contato"
-                className="text-gray-300 hover:text-green-400 transition-colors font-medium"
+                className="text-foreground hover:text-primary transition-colors font-medium"
               >
                 Contato
               </Link>
               <Button asChild>
                 <Link
                   href="https://wa.me/5541985199520?text=Olá, quero começar minha jornada!"
+                  className="hover:bg-primary hover:text-white transition-colors font-medium"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() =>
@@ -90,7 +97,7 @@ export default function Home() {
       <main>
         {/* Hero Section */}
         <section className="py-20 lg:py-32 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-transparent to-green-600/10" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10" />
           <div className="container relative">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-8 animate-fade-in">
@@ -100,12 +107,12 @@ export default function Home() {
                     Jornada de reencontro
                   </div>
 
-                  <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-sora text-white leading-tight">
+                  <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-sora text-muted-foreground leading-tight">
                     Viva de forma mais{" "}
                     <span className="gradient-text-green">autêntica</span>
                   </h1>
 
-                  <p className="text-xl text-gray-300 leading-relaxed max-w-xl">
+                  <p className="text-xl text-foreground/70 leading-relaxed max-w-xl">
                     Ofereço um ambiente seguro e acolhedor para que você se
                     sinta à vontade para expressar pensamentos e sentimentos.
                     Juntos, trabalhamos estratégias alinhadas ao que importa
@@ -191,7 +198,7 @@ export default function Home() {
                     <span className="gradient-text-green">Camila Ferreira</span>
                   </h2>
 
-                  <p className="text-xl text-gray-300 leading-relaxed">
+                  <p className="text-xl text-foreground/70 leading-relaxed">
                     Psicóloga Clínica com formação em Terapias Comportamentais
                     Contextuais. Minha prática se baseia na Terapia de Aceitação
                     e Compromisso (ACT) e também utilizo técnicas da Terapia
@@ -199,7 +206,7 @@ export default function Home() {
                     abrangente para as experiências humanas.
                   </p>
 
-                  <p className="text-lg text-gray-400 leading-relaxed">
+                  <p className="text-lg text-foreground leading-relaxed">
                     Ao longo da minha formação, tive a oportunidade de explorar
                     diversas áreas da psicologia, como a Psicologia Jurídica e
                     Social, o que me permitiu desenvolver uma compreensão mais
@@ -207,7 +214,7 @@ export default function Home() {
                     experiência individual e coletiva.
                   </p>
 
-                  <p className="text-lg text-gray-400 leading-relaxed">
+                  <p className="text-lg text-foreground/70 leading-relaxed">
                     Acredito em uma psicologia clínica baseada em respeito,
                     acolhimento, segurança e autenticidade, pois percebo que a
                     psicoterapia é uma jornada de reencontro consigo mesmo, onde
@@ -230,16 +237,16 @@ export default function Home() {
                       "Estágio em Psicologia Social - CREAS",
                     ].map((item, index) => (
                       <div key={index} className="flex items-center gap-3">
-                        <Check className="w-5 h-5 text-green-400 flex-shrink-0" />
-                        <span className="text-gray-300">{item}</span>
+                        <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                        <span className="gradient-text-green">{item}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="card-dark gradient-green-subtle border-green-500/30">
+                <div className="card-dark gradient-green-subtle border-primary/30">
                   <div className="flex items-start gap-4">
-                    <Quote className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
+                    <Quote className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                     <div>
                       <p className="text-gray-300 italic mb-2">
                         "Vejo a psicoterapia como uma oportunidade de reencontro
@@ -247,7 +254,7 @@ export default function Home() {
                         quem realmente é, buscando uma vida mais alinhada com o
                         que deseja."
                       </p>
-                      <p className="text-sm text-green-400 font-medium">
+                      <p className="text-sm text-primary font-medium">
                         - Camila Ferreira
                       </p>
                     </div>
@@ -273,7 +280,7 @@ export default function Home() {
               </h2>
 
               <div className="max-w-4xl mx-auto space-y-6">
-                <p className="text-xl text-gray-300 leading-relaxed">
+                <p className="text-xl text-foreground leading-relaxed">
                   Meu papel é ajudar você a se sentir encorajado(a) a expressar
                   seus pensamentos e sentimentos, promovendo um ambiente
                   confortável, seguro e respeitoso, onde você possa se sentir
@@ -282,7 +289,7 @@ export default function Home() {
                   é, sem máscaras ou medos.
                 </p>
 
-                <p className="text-lg text-gray-400 leading-relaxed">
+                <p className="text-lg text-foreground/90 leading-relaxed">
                   Na terapia, te ajudo a entender seus padrões de comportamento,
                   explorar suas experiências, identificar o que te impede de
                   avançar e agir de acordo com o que realmente importa para
@@ -291,7 +298,7 @@ export default function Home() {
                   sentido para você.
                 </p>
 
-                <p className="text-lg text-gray-400 leading-relaxed">
+                <p className="text-lg  text-foreground/90 leading-relaxed">
                   A terapia que ofereço é um processo colaborativo, no qual
                   trabalhamos juntos para encontrar as melhores estratégias para
                   o seu crescimento e bem-estar. Utilizo uma variedade de
@@ -324,7 +331,7 @@ export default function Home() {
               ].map((item, index) => (
                 <div key={index} className="card-dark card-hover text-center">
                   <div className="w-16 h-16 gradient-green-subtle rounded-xl mx-auto mb-6 flex items-center justify-center">
-                    <item.icon className="w-8 h-8 text-green-400" />
+                    <item.icon className="w-8 h-8 text-primary" />
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-4">
                     {item.title}
@@ -344,13 +351,13 @@ export default function Home() {
                 <Shield className="w-4 h-4" />O que esperar
               </div>
 
-              <h2 className="text-3xl sm:text-4xl font-bold font-sora text-white mb-6">
+              <h2 className="text-3xl sm:text-4xl font-bold font-sora text-muted-foreground mb-6">
                 O que esperar da{" "}
                 <span className="gradient-text-green">terapia comigo?</span>
               </h2>
 
               <div className="max-w-4xl mx-auto space-y-6">
-                <p className="text-xl text-gray-300 leading-relaxed">
+                <p className="text-xl text-foreground leading-relaxed">
                   Você pode esperar um espaço receptivo, acolhedor e
                   colaborativo. Acredito em uma relação terapêutica baseada na
                   confiança e na escuta ativa, onde suas necessidades e
@@ -380,7 +387,7 @@ export default function Home() {
               <div className="card-dark card-hover">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 gradient-green-subtle rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Heart className="w-6 h-6 text-green-400" />
+                    <Heart className="w-6 h-6 text-primary" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-white mb-3">
@@ -397,7 +404,7 @@ export default function Home() {
               <div className="card-dark card-hover">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 gradient-green-subtle rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Target className="w-6 h-6 text-green-400" />
+                    <Target className="w-6 h-6 text-primary" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-white mb-3">
@@ -435,7 +442,7 @@ export default function Home() {
                   size="lg"
                   variant="secondary"
                   asChild
-                  className="bg-white text-green-600 hover:bg-gray-100"
+                  className="bg-white text-primary hover:bg-gray-100"
                 >
                   <Link
                     href="https://wa.me/5541985199520?text=Olá, quero começar minha jornada! Gostaria de agendar uma consulta."
@@ -476,11 +483,11 @@ export default function Home() {
                 Entre em contato
               </div>
 
-              <h2 className="text-3xl sm:text-4xl font-bold font-sora text-white mb-6">
+              <h2 className="text-3xl sm:text-4xl font-bold font-sora text-muted-foreground mb-6">
                 Vamos <span className="gradient-text-green">conversar?</span>
               </h2>
 
-              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              <p className="text-xl text-foreground max-w-2xl mx-auto">
                 Estou aqui para esclarecer suas dúvidas e te ajudar a dar o
                 primeiro passo em direção ao seu bem-estar. Que encontremos
                 juntos as melhores estratégias para alcançar seus objetivos.

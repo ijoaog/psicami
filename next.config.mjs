@@ -5,34 +5,40 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "standalone",
+  output: 'standalone',
+
   experimental: {
     optimizeCss: true,
-    optimizePackageImports: ["lucide-react"],
+    optimizePackageImports: ['lucide-react'],
   },
+
   images: {
-    formats: ["image/webp"],
-    unoptimized: true,
+    formats: ['image/webp'],
+    unoptimized: true, // útil para usar imagens locais sem otimização do Next
   },
+
   compress: true,
   poweredByHeader: false,
   generateEtags: false,
+
   eslint: {
     ignoreDuringBuilds: true,
   },
+
   typescript: {
     ignoreBuildErrors: true,
   },
+
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
       config.optimization.splitChunks = {
-        chunks: "all",
+        chunks: 'all',
         cacheGroups: {
           default: false,
           vendors: false,
           vendor: {
-            name: "vendor",
-            chunks: "all",
+            name: 'vendor',
+            chunks: 'all',
             test: /node_modules/,
           },
         },
@@ -40,7 +46,6 @@ const nextConfig = {
     }
 
     config.resolve.alias['@'] = resolve(__dirname);
-
     return config;
   },
 };

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: "Uma jornada de reencontro com você mesma.",
   keywords: "psicóloga, terapia, psicologia, ACT, TCC, Curitiba",
   authors: [{ name: "Camila Ferreira" }],
-  viewport: "width=device-width, initial-scale=1",
+  // viewport: "width=device-width, initial-scale=1",
   icons: {
     icon: "/favicon.ico",
   },
@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className="scroll-smooth dark" suppressHydrationWarning>
+    <html lang="pt-BR" className="scroll-smooth" suppressHydrationWarning>
       <head>
         {/* Google Analytics 4 */}
         <Script
