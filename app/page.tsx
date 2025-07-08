@@ -37,7 +37,7 @@ export default function Home() {
                 />
               </div>
               <div>
-                <h1 className="text-lg font-bold text-background font-sora">
+                <h1 className="text-lg font-bold text-background">
                   Camila Ferreira
                 </h1>
                 <p className="text-sm text-background/70">Psicóloga Clínica</p>
@@ -181,7 +181,7 @@ export default function Home() {
                     Jornada de reencontro
                   </div>
 
-                  <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-sora text-muted-foreground leading-tight">
+                  <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-muted-foreground leading-tight">
                     Viva de forma mais{" "}
                     <span className="gradient-text-green">autêntica</span>
                   </h1>
@@ -270,7 +270,7 @@ export default function Home() {
                     Quem sou eu
                   </div>
 
-                  <h2 className="text-3xl sm:text-4xl font-bold font-sora text-foreground leading-tight">
+                  <h2 className="text-3xl sm:text-4xl font-bold text-foreground leading-tight">
                     Olá, sou{" "}
                     <span className="gradient-text-green">Camila Ferreira</span>
                   </h2>
@@ -354,7 +354,7 @@ export default function Home() {
                 Como posso ajudar
               </div>
 
-              <h2 className="text-3xl sm:text-4xl font-bold font-sora text-muted-foreground mb-6">
+              <h2 className="text-3xl sm:text-4xl font-bold text-muted-foreground mb-6">
                 Como posso te{" "}
                 <span className="gradient-text-green">ajudar?</span>
               </h2>
@@ -434,7 +434,7 @@ export default function Home() {
                 <Shield className="w-4 h-4" />O que esperar
               </div>
 
-              <h2 className="text-3xl sm:text-4xl font-bold font-sora text-muted-foreground mb-6">
+              <h2 className="text-3xl sm:text-4xl font-bold text-muted-foreground mb-6">
                 O que esperar da{" "}
                 <span className="gradient-text-green">terapia comigo?</span>
               </h2>
@@ -510,7 +510,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/20" />
           <div className="container text-center relative">
             <div className="max-w-3xl mx-auto space-y-8">
-              <h2 className="text-3xl sm:text-4xl font-bold font-sora text-input">
+              <h2 className="text-3xl sm:text-4xl font-bold text-input">
                 Pronto para começar sua jornada de reencontro?
               </h2>
 
@@ -566,7 +566,7 @@ export default function Home() {
                 Entre em contato
               </div>
 
-              <h2 className="text-3xl sm:text-4xl font-bold font-sora text-muted-foreground mb-6">
+              <h2 className="text-3xl sm:text-4xl font-bold text-muted-foreground mb-6">
                 Vamos <span className="gradient-text-green">conversar?</span>
               </h2>
 
@@ -661,7 +661,7 @@ export default function Home() {
                     />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-input font-sora">
+                    <h3 className="text-lg font-bold text-input">
                       Camila Ferreira
                     </h3>
                     <p className="text-gray-400">Psicóloga Clínica</p>

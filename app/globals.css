@@ -4,29 +4,29 @@
 
 @layer base {
   :root {
-    --background: 246 233 217; /* branco */
-    --foreground: 0 0 0;    /* gray-900 */
-    --card: 246 233 217;       /* gray-100 */
-    --card-foreground: 0 0 0; /* gray-900 */
-    --primary: 4 50 34; /* verde ultra escuro */
-    --primary-foreground: 255 255 255; /* branco */
-    --secondary: 234 222 210;  /* gray-200 */
-    --secondary-foreground: 0 0 0; /* gray-900 */
-    --muted-foreground: 60 60 60; /* gray-500 */
-    --accent: 0 0 0; /* verde quase preto */
-    --accent-foreground: 246 233 217; /* branco */
-    --border: 4 50 34;     /* gray-300 */
-    --input: 246 233 217;      /* gray-100 */
-    --ring: 4 50 34;          /* verde ultra escuro */
+    --background: 246 233 217;
+    --foreground: 0 0 0;
+    --card: 246 233 217;
+    --card-foreground: 0 0 0;
+    --primary: 4 50 34;
+    --primary-foreground: 255 255 255;
+    --secondary: 234 222 210;
+    --secondary-foreground: 0 0 0;
+    --muted-foreground: 60 60 60;
+    --accent: 0 0 0;
+    --accent-foreground: 246 233 217;
+    --border: 4 50 34;
+    --input: 246 233 217;
+    --ring: 4 50 34;
   }
 
   html {
+    font-family: var(--font-montserrat), system-ui, sans-serif;
     scroll-behavior: smooth;
   }
 
   body {
-    @apply text-white font-sans antialiased;
-    font-family: var(--font-inter), system-ui, sans-serif;
+    @apply text-input font-sans antialiased;
     background-color: rgb(var(--background));
   }
 }
@@ -62,7 +62,7 @@
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-900 focus:ring-offset-2 focus:ring-offset-black;
     background: linear-gradient(135deg, #0a2413 0%, #06180d 100%);
-    color: white;
+    color: input-color;
     box-shadow: 0 4px 15px rgba(10, 36, 19, 0.25);
   }
 
@@ -85,7 +85,7 @@
 
   .btn-outline:hover {
     background: linear-gradient(135deg, #0a2413 0%, #050e07 100%);
-    color: white;
+    color: input-colocar;
     box-shadow: 0 4px 15px rgba(10, 36, 19, 0.3);
   }
 
