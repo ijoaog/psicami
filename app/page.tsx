@@ -48,24 +48,44 @@ export default function Home() {
               <Link
                 href="#sobre"
                 className="text-input hover:text-primary transition-colors font-medium"
+                onClick={() =>
+                  window.gtag?.("event", "clique_sobre_header", {
+                    event_category: "sobre",
+                  })
+                }
               >
                 Sobre
               </Link>
               <Link
                 href="#como-ajudo"
                 className="text-input hover:text-primary transition-colors font-medium"
+                onClick={() =>
+                  window.gtag?.("event", "clique_como-ajudo_header", {
+                    event_category: "como-ajudo",
+                  })
+                }
               >
                 Como Ajudo
               </Link>
               <Link
                 href="#terapia"
                 className="text-input hover:text-primary transition-colors font-medium"
+                onClick={() =>
+                  window.gtag?.("event", "clique_terapia_header", {
+                    event_category: "terapia",
+                  })
+                }
               >
                 Terapia
               </Link>
               <Link
                 href="#contato"
                 className="text-input hover:text-primary transition-colors font-medium"
+                onClick={() =>
+                  window.gtag?.("event", "clique_contatos_header", {
+                    event_category: "contato",
+                  })
+                }
               >
                 Contato
               </Link>
