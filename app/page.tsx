@@ -149,10 +149,30 @@ export default function Home() {
               rel={external ? "noopener noreferrer" : undefined}
               className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-2xl bg-primary text-input font-bold shadow-lg hover:brightness-110 transition-all"
               onClick={() => {
-                if (label.includes("WhatsApp")) {
-                  window.gtag?.("event", "clique_whatsapp", {
+                if (label.includes("Agendar pelo WhatsApp")) {
+                  window.gtag?.("event", "clique_whatsapp_mobile", {
                     event_category: "contato",
                     event_label: "Hero CTA WhatsApp",
+                  });
+                } else if (label.includes("Contato")) {
+                  window.gtag?.("event", "clique_contato_mobile", {
+                    event_category: "contato",
+                    event_label: "Hero CTA Contato",
+                  });
+                } else if (label.includes("Sobre")) {
+                  window.gtag?.("event", "clique_sobre_mobile", {
+                    event_category: "contato",
+                    event_label: "Hero CTA Sobre",
+                  });
+                } else if (label.includes("Terapia")) {
+                  window.gtag?.("event", "clique_terapia_mobile", {
+                    event_category: "contato",
+                    event_label: "Hero CTA Terapia",
+                  });
+                } else if (label.includes("Como Ajudo")) {
+                  window.gtag?.("event", "clique_como-ajudo_mobile", {
+                    event_category: "contato",
+                    event_label: "Hero CTA Como Ajudo",
                   });
                 }
               }}
@@ -348,8 +368,7 @@ export default function Home() {
               </div>
 
               <h2 className="text-3xl sm:text-4xl font-bold text-muted-foreground mb-6">
-                Como posso te{" "}
-                <span className="text-primary">ajudar?</span>
+                Como posso te <span className="text-primary">ajudar?</span>
               </h2>
 
               <div className="max-w-4xl mx-auto space-y-6">
