@@ -700,10 +700,20 @@ export default function Home() {
                     <Phone className="w-4 h-4" />
                     <span>(41) 9 8519-9520</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <Link
+                    href="https://www.instagram.com/psicami_/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() =>
+                      window.gtag?.("event", "clique_instagram_footer_@_psicami", {
+                        event_category: "contato",
+                        event_label: "Footer Instagram",
+                      })
+                    }
+                  >
                     <Instagram className="w-4 h-4" />
                     <span>@psicami_</span>
-                  </div>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -715,13 +725,13 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() =>
-                window.gtag?.("event", "clique_instagram", {
+                window.gtag?.("event", "clique_instagram_footer_icon", {
                   event_category: "contato",
                   event_label: "Footer Instagram",
                 })
               }
             >
-              <Instagram className="w-5 h-5 text-foreground hover:text-input transition-colors" />
+              <Instagram className="w-5 h-5 text-foreground hover:text-primary transition-colors" />
             </Link>
             <p className="text-foreground text-sm">
               © 2025 Camila Ferreira. Todos os direitos reservados.
