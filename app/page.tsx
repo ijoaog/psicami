@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-[linear-gradient(90deg,rgba(10,36,19,0.7),rgba(6,24,13,0.7),rgba(5,14,7,0.7))] backdrop-blur-sm text-white shadow-md">
+      <header className="sticky top-0 z-50 bg-[linear-gradient(90deg,rgba(10,36,19,0.7),rgba(6,24,13,0.7),rgba(5,14,7,0.7))] backdrop-blur-sm text-input shadow-md">
         <div className="container">
           <div className="flex items-center md:justify-between justify-center h-16 w-full">
             <div className="flex items-center space-x-3">
@@ -47,32 +47,32 @@ export default function Home() {
             <nav className="hidden md:flex items-center space-x-6">
               <Link
                 href="#sobre"
-                className="text-white hover:text-primary transition-colors font-medium"
+                className="text-input hover:text-primary transition-colors font-medium"
               >
                 Sobre
               </Link>
               <Link
                 href="#como-ajudo"
-                className="text-white hover:text-primary transition-colors font-medium"
+                className="text-input hover:text-primary transition-colors font-medium"
               >
                 Como Ajudo
               </Link>
               <Link
                 href="#terapia"
-                className="text-white hover:text-primary transition-colors font-medium"
+                className="text-input hover:text-primary transition-colors font-medium"
               >
                 Terapia
               </Link>
               <Link
                 href="#contato"
-                className="text-white hover:text-primary transition-colors font-medium"
+                className="text-input hover:text-primary transition-colors font-medium"
               >
                 Contato
               </Link>
               <Button asChild>
                 <Link
                   href="https://wa.me/5541985199520?text=Olá, quero começar minha jornada!"
-                  className="hover:bg-primary hover:text-white transition-colors font-medium"
+                  className="hover:bg-primary hover:text-input transition-colors font-medium"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() =>
@@ -94,60 +94,77 @@ export default function Home() {
         </div>
       </header>
       {/* 🌿 MENU MOBILE ESTILO LINKTREE BONITO E ESCURO */}
-      <section className="md:hidden h-[90dvh] flex flex-col justify-center items-center px-6 relative bg-gradient-to-b from-emerald-950/80 via-emerald-900/60 to-green-900/40 transition-colors">
+      <section className="md:hidden h-[90dvh] flex flex-col justify-center items-center px-6 relative bg-gradient-to-b from-emerald-950/80 via-emerald-900/60 to-green-900/40 text-input">
+        {/* 🌟 LOGO COMPOSIÇÃO CRIATIVA */}
+
+        {/* <div className="relative flex flex-col items-center mb-10 animate-fade-in-up"> */}
+        {/* Círculo com glow */}
+        {/* <div className="absolute w-40 h-40 bg-emerald-800/30 rounded-full blur-2xl z-0" /> */}
+
+        {/* Logo principal com brilho suave */}
+        {/* <div className="z-10"> */}
+        {/* <Image */}
+        {/* src="/logo-camila-improved.png" */}
+        {/* alt="Camila Ferreira Psicóloga Clínica" */}
+        {/* width={140} */}
+        {/* height={140} */}
+        {/* /> */}
+        {/* </div> */}
+        {/* </div> */}
+
+        {/* 🔹 BOTÕES DE AÇÃO */}
         <div className="flex flex-col items-center gap-4 w-full max-w-sm">
-          <Link
-            href="#sobre"
-            className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-2xl bg-gradient-to-r from-emerald-950 to-green-900 text-white font-bold shadow-lg hover:brightness-110 transition-all"
-          >
-            <Shield className="w-4 h-4" />
-            Sobre
-          </Link>
-
-          <Link
-            href="#como-ajudo"
-            className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-2xl bg-gradient-to-r from-emerald-950 to-green-900 text-white font-bold shadow-lg hover:brightness-110 transition-all"
-          >
-            <Brain className="w-4 h-4" />
-            Como Ajudo
-          </Link>
-
-          <Link
-            href="#terapia"
-            className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-2xl bg-gradient-to-r from-emerald-950 to-green-900 text-white font-bold shadow-lg hover:brightness-110 transition-all"
-          >
-            <Heart className="w-4 h-4" />
-            Terapia
-          </Link>
-
-          <Link
-            href="#contato"
-            className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-2xl bg-gradient-to-r from-emerald-950 to-green-900 text-white font-bold shadow-lg hover:brightness-110 transition-all"
-          >
-            <Phone className="w-4 h-4" />
-            Contato
-          </Link>
-
-          <Link
-            href="https://wa.me/5541985199520?text=Olá, quero começar minha jornada!"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-2xl bg-gradient-to-r from-emerald-950 to-green-900 text-white font-bold shadow-lg hover:brightness-110 transition-all"
-            onClick={() =>
-              window.gtag?.("event", "clique_whatsapp", {
-                event_category: "contato",
-                event_label: "Hero CTA WhatsApp",
-              })
-            }
-          >
-            <MessageCircle className="w-4 h-4" />
-            Agendar pelo WhatsApp
-          </Link>
-        </div>
-
-        {/* 🟡 Seta animada no final da tela */}
-        <div className="absolute bottom-6 animate-bounce text-green-900">
-          <ArrowRight className="rotate-90 w-6 h-6" />
+          {[
+            {
+              href: "#sobre",
+              icon: <Shield className="w-4 h-4" />,
+              label: "Sobre",
+            },
+            {
+              href: "#como-ajudo",
+              icon: <Brain className="w-4 h-4" />,
+              label: "Como Ajudo",
+            },
+            {
+              href: "#terapia",
+              icon: <Heart className="w-4 h-4" />,
+              label: "Terapia",
+            },
+            {
+              href: "#contato",
+              icon: <Phone className="w-4 h-4" />,
+              label: "Contato",
+            },
+            {
+              href: "https://wa.me/5541985199520?text=Olá, quero começar minha jornada!",
+              icon: <MessageCircle className="w-4 h-4" />,
+              label: "Agendar pelo WhatsApp",
+              external: true,
+            },
+          ].map(({ href, icon, label, external }, i) => (
+            <Link
+              key={i}
+              href={href}
+              target={external ? "_blank" : undefined}
+              rel={external ? "noopener noreferrer" : undefined}
+              className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-2xl bg-gradient-to-r from-emerald-950 to-green-900 text-input font-bold shadow-lg hover:brightness-110 transition-all"
+              onClick={() => {
+                if (label.includes("WhatsApp")) {
+                  window.gtag?.("event", "clique_whatsapp", {
+                    event_category: "contato",
+                    event_label: "Hero CTA WhatsApp",
+                  });
+                }
+              }}
+            >
+              {icon}
+              {label}
+            </Link>
+          ))}
+          {/* 🔽 Seta de rolagem */}
+          <div className="absolute bottom-6 animate-bounce text-green-900 z-20">
+            <ArrowRight className="rotate-90 w-6 h-6" />
+          </div>
         </div>
       </section>
 
@@ -308,7 +325,7 @@ export default function Home() {
                   <div className="flex items-start gap-4">
                     <Quote className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                     <div>
-                      <p className="text-white italic mb-2">
+                      <p className="text-input italic mb-2">
                         "Vejo a psicoterapia como uma oportunidade de reencontro
                         consigo mesmo, onde o paciente pode se reconectar com
                         quem realmente é, buscando uma vida mais alinhada com o
@@ -394,9 +411,9 @@ export default function Home() {
               ].map((item, index) => (
                 <div key={index} className="card-dark card-hover text-center">
                   <div className="w-16 h-16 gradient-green-subtle rounded-xl mx-auto mb-6 flex items-center justify-center">
-                    <item.icon className="w-8 h-8 text-primary" />
+                    <item.icon className="w-8 h-8 text-input" />
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-4">
+                  <h3 className="text-xl font-semibold text-input mb-4">
                     {item.title}
                   </h3>
                   <p className="text-gray-400">{item.description}</p>
@@ -430,7 +447,7 @@ export default function Home() {
                   expectativas são sempre consideradas.
                 </p>
 
-                <p className="text-lg text-gray-400 leading-relaxed">
+                <p className="text-lg text-foreground/70 leading-relaxed">
                   Juntos(as), exploraremos suas potencialidades e encontraremos
                   as ferramentas e técnicas mais adequadas para você. Meu
                   objetivo é que você se sinta confortável para expressar suas
@@ -438,7 +455,7 @@ export default function Home() {
                   atenção e respeito.
                 </p>
 
-                <p className="text-lg text-gray-400 leading-relaxed">
+                <p className="text-lg text-foreground/70 leading-relaxed">
                   Durante nossos encontros, vamos explorar suas potencialidades,
                   identificar recursos internos e construir caminhos que façam
                   sentido para você. As ferramentas e técnicas que utilizo são
@@ -453,10 +470,10 @@ export default function Home() {
               <div className="card-dark card-hover">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 gradient-green-subtle rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Heart className="w-6 h-6 text-primary" />
+                    <Heart className="w-6 h-6 text-input" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-white mb-3">
+                    <h3 className="text-xl font-semibold text-input mb-3">
                       Escuta Ativa e Confiança
                     </h3>
                     <p className="text-gray-400">
@@ -470,10 +487,10 @@ export default function Home() {
               <div className="card-dark card-hover">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 gradient-green-subtle rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Target className="w-6 h-6 text-primary" />
+                    <Target className="w-6 h-6 text-input" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-white mb-3">
+                    <h3 className="text-xl font-semibold text-input mb-3">
                       Vida Autêntica
                     </h3>
                     <p className="text-gray-400">
@@ -493,7 +510,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/20" />
           <div className="container text-center relative">
             <div className="max-w-3xl mx-auto space-y-8">
-              <h2 className="text-3xl sm:text-4xl font-bold font-sora text-white">
+              <h2 className="text-3xl sm:text-4xl font-bold font-sora text-input">
                 Pronto para começar sua jornada de reencontro?
               </h2>
 
@@ -508,7 +525,7 @@ export default function Home() {
                   size="lg"
                   variant="secondary"
                   asChild
-                  className="bg-white text-primary hover:bg-gray-100"
+                  className="bg-input text-primary hover:bg-gray-100"
                 >
                   <Link
                     href="https://wa.me/5541985199520?text=Olá, quero começar minha jornada! Gostaria de agendar uma consulta."
@@ -525,7 +542,7 @@ export default function Home() {
                   size="lg"
                   variant="outline"
                   asChild
-                  className="border-white text-white hover:bg-white/10 bg-transparent"
+                  className="border-input text-input hover:bg-input/10 bg-transparent"
                 >
                   <Link
                     href="#contato"
@@ -594,14 +611,14 @@ export default function Home() {
                       contact.primary ? "gradient-green" : "bg-gray-700"
                     }`}
                   >
-                    <contact.icon className="w-6 h-6 text-white" />
+                    <contact.icon className="w-6 h-6 text-input" />
                   </div>
 
-                  <h3 className="text-xl font-semibold text-white mb-2">
+                  <h3 className="text-xl font-semibold text-input mb-2">
                     {contact.title}
                   </h3>
                   <p className="text-gray-400 mb-2">{contact.description}</p>
-                  <p className="text-white font-medium mb-6">
+                  <p className="text-input font-medium mb-6">
                     {contact.contact}
                   </p>
 
@@ -644,7 +661,7 @@ export default function Home() {
                     />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white font-sora">
+                    <h3 className="text-lg font-bold text-input font-sora">
                       Camila Ferreira
                     </h3>
                     <p className="text-gray-400">Psicóloga Clínica</p>
@@ -658,7 +675,7 @@ export default function Home() {
               </div>
 
               <div className="flex flex-col items-center md:items-start">
-                <h4 className="font-semibold text-white mb-4">Contato</h4>
+                <h4 className="font-semibold text-input mb-4">Contato</h4>
                 <div className="space-y-2 text-gray-400">
                   <div className="flex items-center gap-2">
                     <Phone className="w-4 h-4" />
@@ -685,7 +702,7 @@ export default function Home() {
                 })
               }
             >
-              <Instagram className="w-5 h-5 text-gray-400 hover:text-white transition-colors" />
+              <Instagram className="w-5 h-5 text-gray-400 hover:text-input transition-colors" />
             </Link>
             <p className="text-gray-500 text-sm">
               © 2025 Camila Ferreira. Todos os direitos reservados.
