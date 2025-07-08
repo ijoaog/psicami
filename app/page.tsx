@@ -94,7 +94,7 @@ export default function Home() {
         </div>
       </header>
       {/* 🌿 MENU MOBILE ESTILO LINKTREE BONITO E ESCURO */}
-      <section className="md:hidden h-[90dvh] flex flex-col justify-center items-center px-6 relative bg-gradient-to-b from-emerald-950/80 via-emerald-900/60 to-green-900/40 text-input">
+      <section className="md:hidden h-[90dvh] flex flex-col justify-center items-center px-6 relative bg-input text-input">
         {/* 🌟 LOGO COMPOSIÇÃO CRIATIVA */}
 
         {/* <div className="relative flex flex-col items-center mb-10 animate-fade-in-up"> */}
@@ -170,8 +170,8 @@ export default function Home() {
 
       <main>
         {/* Hero Section */}
-        <section className="py-20 lg:py-32 relative overflow-hidden bg-gradient-to-b from-green-900/40 via-background to-background transition-colors">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10" />
+        <section className="py-20 lg:py-32 relative overflow-hidden bg-input transition-colors">
+          <div className="absolute inset-0 bg-input" />
           <div className="container relative">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-8 animate-fade-in">
@@ -212,10 +212,9 @@ export default function Home() {
                   </Button>
 
                   <Button
-                    variant="outline"
                     size="lg"
                     asChild
-                    className="btn-outline bg-transparent"
+                    className="btn-primary flex flex-row"
                   >
                     <Link
                       href="#sobre"
@@ -246,10 +245,7 @@ export default function Home() {
         </section>
 
         {/* About */}
-        <section
-          id="sobre"
-          className="py-20 bg-gradient-to-b from-background via-emerald-50/10 to-background transition-colors"
-        >
+        <section id="sobre" className="py-20 bg-input">
           <div className="container">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="relative order-last lg:order-first">
@@ -343,10 +339,7 @@ export default function Home() {
         </section>
 
         {/* Como Posso Te Ajudar */}
-        <section
-          id="como-ajudo"
-          className="py-20 bg-gradient-to-b from-emerald-100/5 via-emerald-900/10 to-gray-900/30 transition-colors"
-        >
+        <section id="como-ajudo" className="py-20 bg-input">
           <div className="container">
             <div className="text-center mb-16">
               <div className="badge-primary mx-auto mb-4">
@@ -424,10 +417,7 @@ export default function Home() {
         </section>
 
         {/* O Que Esperar da Terapia */}
-        <section
-          id="terapia"
-          className="py-20 bg-gradient-to-b from-gray-900/10 via-background to-background transition-colors"
-        >
+        <section id="terapia" className="py-20 bg-input">
           <div className="container">
             <div className="text-center mb-16">
               <div className="badge-primary mx-auto mb-4">
@@ -506,27 +496,22 @@ export default function Home() {
         </section>
 
         {/* CTA */}
-        <section className="py-20 bg-gradient-to-br from-green-900 via-emerald-900 to-emerald-800 relative overflow-hidden transition-colors">
-          <div className="absolute inset-0 bg-black/20" />
+        <section className="py-20 bg-input relative overflow-hidden">
+          <div className="absolute inset-0 bg-input" />
           <div className="container text-center relative">
             <div className="max-w-3xl mx-auto space-y-8">
-              <h2 className="text-3xl sm:text-4xl font-bold text-input">
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
                 Pronto para começar sua jornada de reencontro?
               </h2>
 
-              <p className="text-xl text-green-100 max-w-2xl mx-auto">
+              <p className="text-xl text-foreground max-w-2xl mx-auto">
                 O foco é em te ajudar a desenvolver novas perspectivas, recursos
                 e habilidades para lidar com os desafios da vida e alcançar um
                 bem-estar emocional.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  size="lg"
-                  variant="secondary"
-                  asChild
-                  className="bg-input text-primary hover:bg-gray-100"
-                >
+                <Button size="lg" asChild className="btn-primary flex flex-row">
                   <Link
                     href="https://wa.me/5541985199520?text=Olá, quero começar minha jornada! Gostaria de agendar uma consulta."
                     target="_blank"
@@ -538,12 +523,7 @@ export default function Home() {
                   </Link>
                 </Button>
 
-                <Button
-                  size="lg"
-                  variant="outline"
-                  asChild
-                  className="border-input text-input hover:bg-input/10 bg-transparent"
-                >
+                <Button size="lg" asChild className="btn-primary flex flex-row">
                   <Link
                     href="#contato"
                     className="flex flex-row items-center gap-2"
@@ -608,7 +588,7 @@ export default function Home() {
                 <div key={index} className="card-dark card-hover text-center">
                   <div
                     className={`w-12 h-12 rounded-lg mx-auto mb-4 flex items-center justify-center ${
-                      contact.primary ? "gradient-green" : "bg-gray-700"
+                      contact.primary ? "bg-primary" : "bg-gray-700"
                     }`}
                   >
                     <contact.icon className="w-6 h-6 text-input" />
@@ -645,7 +625,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-t from-emerald-950 via-gray-950 to-gray-900 border-t border-gray-800 transition-colors">
+      <footer className="bg-input">
         <div className="container">
           <div className="py-12">
             <div className="flex flex-col md:grid md:grid-cols-3 gap-8 text-center md:text-left items-center md:items-start justify-center">
@@ -664,19 +644,19 @@ export default function Home() {
                     <h3 className="text-lg font-bold text-input">
                       Camila Ferreira
                     </h3>
-                    <p className="text-gray-400">Psicóloga Clínica</p>
+                    <p className="text-foreground">Psicóloga Clínica</p>
                   </div>
                 </div>
-                <p className="text-gray-400 mb-4 max-w-md">
+                <p className="text-foreground mb-4 max-w-md">
                   Psicoterapia como jornada de reencontro consigo mesmo, baseada
                   em ACT e TCC, com foco na autenticidade e bem-estar emocional.
                 </p>
-                <p className="text-sm text-gray-500">CRP 08/44058</p>
+                <p className="text-sm text-foreground">CRP 08/44058</p>
               </div>
 
               <div className="flex flex-col items-center md:items-start">
                 <h4 className="font-semibold text-input mb-4">Contato</h4>
-                <div className="space-y-2 text-gray-400">
+                <div className="space-y-2 text-foreground">
                   <div className="flex items-center gap-2">
                     <Phone className="w-4 h-4" />
                     <span>(41) 9 8519-9520</span>
@@ -702,9 +682,9 @@ export default function Home() {
                 })
               }
             >
-              <Instagram className="w-5 h-5 text-gray-400 hover:text-input transition-colors" />
+              <Instagram className="w-5 h-5 text-foreground hover:text-input transition-colors" />
             </Link>
-            <p className="text-gray-500 text-sm">
+            <p className="text-foreground text-sm">
               © 2025 Camila Ferreira. Todos os direitos reservados.
             </p>
           </div>
