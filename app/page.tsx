@@ -183,7 +183,7 @@ export default function Home() {
 
                   <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-muted-foreground leading-tight">
                     Viva de forma mais{" "}
-                    <span className="gradient-text-green">autêntica</span>
+                    <span className="text-primary">autêntica</span>
                   </h1>
 
                   <p className="text-xl text-foreground/70 leading-relaxed max-w-xl">
@@ -268,7 +268,7 @@ export default function Home() {
 
                   <h2 className="text-3xl sm:text-4xl font-bold text-foreground leading-tight">
                     Olá, sou{" "}
-                    <span className="gradient-text-green">Camila Ferreira</span>
+                    <span className="text-primary">Camila Ferreira</span>
                   </h2>
 
                   <p className="text-xl text-foreground/70 leading-relaxed">
@@ -311,7 +311,7 @@ export default function Home() {
                     ].map((item, index) => (
                       <div key={index} className="flex items-center gap-3">
                         <Check className="w-5 h-5 text-primary flex-shrink-0" />
-                        <span className="gradient-text-green">{item}</span>
+                        <span className="text-primary">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -349,7 +349,7 @@ export default function Home() {
 
               <h2 className="text-3xl sm:text-4xl font-bold text-muted-foreground mb-6">
                 Como posso te{" "}
-                <span className="gradient-text-green">ajudar?</span>
+                <span className="text-primary">ajudar?</span>
               </h2>
 
               <div className="max-w-4xl mx-auto space-y-6">
@@ -426,7 +426,7 @@ export default function Home() {
 
               <h2 className="text-3xl sm:text-4xl font-bold text-muted-foreground mb-6">
                 O que esperar da{" "}
-                <span className="gradient-text-green">terapia comigo?</span>
+                <span className="text-primary">terapia comigo?</span>
               </h2>
 
               <div className="max-w-4xl mx-auto space-y-6">
@@ -547,7 +547,7 @@ export default function Home() {
               </div>
 
               <h2 className="text-3xl sm:text-4xl font-bold text-muted-foreground mb-6">
-                Vamos <span className="gradient-text-green">conversar?</span>
+                Vamos <span className="text-primary">conversar?</span>
               </h2>
 
               <p className="text-xl text-foreground max-w-2xl mx-auto">
