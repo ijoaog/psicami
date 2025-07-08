@@ -308,13 +308,13 @@ export default function Home() {
                   <div className="flex items-start gap-4">
                     <Quote className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                     <div>
-                      <p className="text-gray-300 italic mb-2">
+                      <p className="text-white italic mb-2">
                         "Vejo a psicoterapia como uma oportunidade de reencontro
                         consigo mesmo, onde o paciente pode se reconectar com
                         quem realmente é, buscando uma vida mais alinhada com o
                         que deseja."
                       </p>
-                      <p className="text-sm text-ring font-medium">
+                      <p className="text-sm text-muted-foreground font-medium">
                         - Camila Ferreira
                       </p>
                     </div>
@@ -337,7 +337,7 @@ export default function Home() {
                 Como posso ajudar
               </div>
 
-              <h2 className="text-3xl sm:text-4xl font-bold font-sora text-white mb-6">
+              <h2 className="text-3xl sm:text-4xl font-bold font-sora text-muted-foreground mb-6">
                 Como posso te{" "}
                 <span className="gradient-text-green">ajudar?</span>
               </h2>
