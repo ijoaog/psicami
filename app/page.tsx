@@ -69,7 +69,7 @@ export default function Home() {
               >
                 Contato
               </Link>
-              <Button asChild>
+              <Button size="lg" asChild className="btn-primary flex flex-row">
                 <Link
                   href="https://wa.me/5541985199520?text=Olá, quero começar minha jornada!"
                   className="hover:bg-primary hover:text-input transition-colors font-medium"
