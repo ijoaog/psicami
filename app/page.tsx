@@ -47,25 +47,25 @@ export default function Home() {
             <nav className="hidden md:flex items-center space-x-6">
               <Link
                 href="#sobre"
-                className="text-foreground hover:text-primary transition-colors font-medium"
+                className="text-white hover:text-primary transition-colors font-medium"
               >
                 Sobre
               </Link>
               <Link
                 href="#como-ajudo"
-                className="text-foreground hover:text-primary transition-colors font-medium"
+                className="text-white hover:text-primary transition-colors font-medium"
               >
                 Como Ajudo
               </Link>
               <Link
                 href="#terapia"
-                className="text-foreground hover:text-primary transition-colors font-medium"
+                className="text-white hover:text-primary transition-colors font-medium"
               >
                 Terapia
               </Link>
               <Link
                 href="#contato"
-                className="text-foreground hover:text-primary transition-colors font-medium"
+                className="text-white hover:text-primary transition-colors font-medium"
               >
                 Contato
               </Link>
@@ -93,6 +93,63 @@ export default function Home() {
           </div>
         </div>
       </header>
+      {/* 🌿 MENU MOBILE ESTILO LINKTREE BONITO E ESCURO */}
+      <section className="md:hidden h-[90dvh] flex flex-col justify-center items-center px-6 relative bg-gradient-to-br from-primary/5 via-transparent to-primary/10">
+        <div className="flex flex-col items-center gap-4 w-full max-w-sm">
+          <Link
+            href="#sobre"
+            className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-2xl bg-gradient-to-r from-emerald-950 to-green-900 text-white font-bold shadow-lg hover:brightness-110 transition-all"
+          >
+            <Shield className="w-4 h-4" />
+            Sobre
+          </Link>
+
+          <Link
+            href="#como-ajudo"
+            className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-2xl bg-gradient-to-r from-emerald-950 to-green-900 text-white font-bold shadow-lg hover:brightness-110 transition-all"
+          >
+            <Brain className="w-4 h-4" />
+            Como Ajudo
+          </Link>
+
+          <Link
+            href="#terapia"
+            className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-2xl bg-gradient-to-r from-emerald-950 to-green-900 text-white font-bold shadow-lg hover:brightness-110 transition-all"
+          >
+            <Heart className="w-4 h-4" />
+            Terapia
+          </Link>
+
+          <Link
+            href="#contato"
+            className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-2xl bg-gradient-to-r from-emerald-950 to-green-900 text-white font-bold shadow-lg hover:brightness-110 transition-all"
+          >
+            <Phone className="w-4 h-4" />
+            Contato
+          </Link>
+
+          <Link
+            href="https://wa.me/5541985199520?text=Olá, quero começar minha jornada!"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-2xl bg-gradient-to-r from-emerald-950 to-green-900 text-white font-bold shadow-lg hover:brightness-110 transition-all"
+            onClick={() =>
+              window.gtag?.("event", "clique_whatsapp", {
+                event_category: "contato",
+                event_label: "Hero CTA WhatsApp",
+              })
+            }
+          >
+            <MessageCircle className="w-4 h-4" />
+            Agendar pelo WhatsApp
+          </Link>
+        </div>
+
+        {/* 🟡 Seta animada no final da tela */}
+        <div className="absolute bottom-6 animate-bounce text-green-900">
+          <ArrowRight className="rotate-90 w-6 h-6" />
+        </div>
+      </section>
 
       <main>
         {/* Hero Section */}
@@ -193,7 +250,7 @@ export default function Home() {
                     Quem sou eu
                   </div>
 
-                  <h2 className="text-3xl sm:text-4xl font-bold font-sora text-white">
+                  <h2 className="text-3xl sm:text-4xl font-bold font-sora text-foreground leading-tight">
                     Olá, sou{" "}
                     <span className="gradient-text-green">Camila Ferreira</span>
                   </h2>
@@ -224,7 +281,7 @@ export default function Home() {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-white">
+                  <h3 className="text-xl font-semibold text-foreground">
                     Formação e Trajetória
                   </h3>
                   <div className="space-y-3">
@@ -254,7 +311,7 @@ export default function Home() {
                         quem realmente é, buscando uma vida mais alinhada com o
                         que deseja."
                       </p>
-                      <p className="text-sm text-primary font-medium">
+                      <p className="text-sm text-ring font-medium">
                         - Camila Ferreira
                       </p>
                     </div>
