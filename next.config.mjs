@@ -21,10 +21,6 @@ const nextConfig = {
   poweredByHeader: false,
   generateEtags: false,
 
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-
   typescript: {
     ignoreBuildErrors: true,
   },
