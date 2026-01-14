@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   psicami:
     build:
@@ -15,5 +17,4 @@ services:
 
 networks:
   web:
-    name: web
     external: true

@@ -1,6 +1,7 @@
-"use client";
-import Image from "next/image";
-import Link from "next/link";
+'use client';
+import { useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import {
   MessageCircle,
   Heart,
@@ -14,12 +15,22 @@ import {
   Users,
   Brain,
   Target,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useTrackFooterView } from "@/hooks/useScrollTracker";
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { useTrackFooterView } from '@/hooks/useScrollTracker';
 
 export default function Home() {
   useTrackFooterView();
+
+  // =========================
+  // Google Ads Conversion - PAGE VIEW
+  // =========================
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'ads_conversion_PAGE_VIEW_1');
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -49,8 +60,8 @@ export default function Home() {
                 href="#sobre"
                 className="text-input hover:text-primary transition-colors font-medium"
                 onClick={() =>
-                  window.gtag?.("event", "clique_sobre_header", {
-                    event_category: "sobre",
+                  window.gtag?.('event', 'clique_sobre_header', {
+                    event_category: 'sobre',
                   })
                 }
               >
@@ -60,8 +71,8 @@ export default function Home() {
                 href="#como-ajudo"
                 className="text-input hover:text-primary transition-colors font-medium"
                 onClick={() =>
-                  window.gtag?.("event", "clique_como-ajudo_header", {
-                    event_category: "como-ajudo",
+                  window.gtag?.('event', 'clique_como-ajudo_header', {
+                    event_category: 'como-ajudo',
                   })
                 }
               >
@@ -71,8 +82,8 @@ export default function Home() {
                 href="#terapia"
                 className="text-input hover:text-primary transition-colors font-medium"
                 onClick={() =>
-                  window.gtag?.("event", "clique_terapia_header", {
-                    event_category: "terapia",
+                  window.gtag?.('event', 'clique_terapia_header', {
+                    event_category: 'terapia',
                   })
                 }
               >
@@ -82,8 +93,8 @@ export default function Home() {
                 href="#contato"
                 className="text-input hover:text-primary transition-colors font-medium"
                 onClick={() =>
-                  window.gtag?.("event", "clique_contatos_header", {
-                    event_category: "contato",
+                  window.gtag?.('event', 'clique_contatos_header', {
+                    event_category: 'contato',
                   })
                 }
               >
@@ -96,9 +107,9 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() =>
-                    window.gtag?.("event", "clique_whatsapp_header", {
-                      event_category: "contato",
-                      event_label: "Hero CTA WhatsApp",
+                    window.gtag?.('event', 'clique_whatsapp_header', {
+                      event_category: 'contato',
+                      event_label: 'Hero CTA WhatsApp',
                     })
                   }
                 >
@@ -136,63 +147,63 @@ export default function Home() {
         <div className="flex flex-col items-center gap-4 w-full max-w-sm">
           {[
             {
-              href: "#sobre",
+              href: '#sobre',
               icon: <Shield className="w-4 h-4" />,
-              label: "Sobre",
+              label: 'Sobre',
             },
             {
-              href: "#como-ajudo",
+              href: '#como-ajudo',
               icon: <Brain className="w-4 h-4" />,
-              label: "Como Ajudo",
+              label: 'Como Ajudo',
             },
             {
-              href: "#terapia",
+              href: '#terapia',
               icon: <Heart className="w-4 h-4" />,
-              label: "Terapia",
+              label: 'Terapia',
             },
             {
-              href: "#contato",
+              href: '#contato',
               icon: <Phone className="w-4 h-4" />,
-              label: "Contato",
+              label: 'Contato',
             },
             {
-              href: "https://wa.me/5541985199520?text=Olá, quero começar minha jornada!",
+              href: 'https://wa.me/5541985199520?text=Olá, quero começar minha jornada!',
               icon: <MessageCircle className="w-4 h-4" />,
-              label: "Agendar pelo WhatsApp",
+              label: 'Agendar pelo WhatsApp',
               external: true,
             },
           ].map(({ href, icon, label, external }, i) => (
             <Link
               key={i}
               href={href}
-              target={external ? "_blank" : undefined}
-              rel={external ? "noopener noreferrer" : undefined}
+              target={external ? '_blank' : undefined}
+              rel={external ? 'noopener noreferrer' : undefined}
               className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-2xl bg-primary text-input font-bold shadow-lg hover:brightness-110 transition-all"
               onClick={() => {
-                if (label.includes("Agendar pelo WhatsApp")) {
-                  window.gtag?.("event", "clique_whatsapp_mobile", {
-                    event_category: "contato",
-                    event_label: "Hero CTA WhatsApp",
+                if (label.includes('Agendar pelo WhatsApp')) {
+                  window.gtag?.('event', 'clique_whatsapp_mobile', {
+                    event_category: 'contato',
+                    event_label: 'Hero CTA WhatsApp',
                   });
-                } else if (label.includes("Contato")) {
-                  window.gtag?.("event", "clique_contato_mobile", {
-                    event_category: "contato",
-                    event_label: "contato",
+                } else if (label.includes('Contato')) {
+                  window.gtag?.('event', 'clique_contato_mobile', {
+                    event_category: 'contato',
+                    event_label: 'contato',
                   });
-                } else if (label.includes("Sobre")) {
-                  window.gtag?.("event", "clique_sobre_mobile", {
-                    event_category: "contato",
-                    event_label: "sobre",
+                } else if (label.includes('Sobre')) {
+                  window.gtag?.('event', 'clique_sobre_mobile', {
+                    event_category: 'contato',
+                    event_label: 'sobre',
                   });
-                } else if (label.includes("Terapia")) {
-                  window.gtag?.("event", "clique_terapia_mobile", {
-                    event_category: "contato",
-                    event_label: "terapia",
+                } else if (label.includes('Terapia')) {
+                  window.gtag?.('event', 'clique_terapia_mobile', {
+                    event_category: 'contato',
+                    event_label: 'terapia',
                   });
-                } else if (label.includes("Como Ajudo")) {
-                  window.gtag?.("event", "clique_como-ajudo_mobile", {
-                    event_category: "contato",
-                    event_label: "como-ajudo",
+                } else if (label.includes('Como Ajudo')) {
+                  window.gtag?.('event', 'clique_como-ajudo_mobile', {
+                    event_category: 'contato',
+                    event_label: 'como-ajudo',
                   });
                 }
               }}
@@ -222,7 +233,7 @@ export default function Home() {
                   </div>
 
                   <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-muted-foreground leading-tight">
-                    Viva de forma mais{" "}
+                    Viva de forma mais{' '}
                     <span className="text-primary">autêntica</span>
                   </h1>
 
@@ -307,7 +318,7 @@ export default function Home() {
                   </div>
 
                   <h2 className="text-3xl sm:text-4xl font-bold text-foreground leading-tight">
-                    Olá, sou{" "}
+                    Olá, sou{' '}
                     <span className="text-primary">Camila Ferreira</span>
                   </h2>
 
@@ -342,12 +353,12 @@ export default function Home() {
                   </h3>
                   <div className="space-y-3">
                     {[
-                      "Graduação em Psicologia pelo Centro Universitário de Maringá",
-                      "Formação em Terapias Comportamentais Contextuais - Eurekka",
-                      "Formação em Psicologia Breve Focal - Fratelli",
-                      "Estágio em Psicologia Jurídica - Juizado de Violência Doméstica",
-                      "Estágio em Psicologia Jurídica - Coordenadoria da Infância e Juventude",
-                      "Estágio em Psicologia Social - CREAS",
+                      'Graduação em Psicologia pelo Centro Universitário de Maringá',
+                      'Formação em Terapias Comportamentais Contextuais - Eurekka',
+                      'Formação em Psicologia Breve Focal - Fratelli',
+                      'Estágio em Psicologia Jurídica - Juizado de Violência Doméstica',
+                      'Estágio em Psicologia Jurídica - Coordenadoria da Infância e Juventude',
+                      'Estágio em Psicologia Social - CREAS',
                     ].map((item, index) => (
                       <div key={index} className="flex items-center gap-3">
                         <Check className="w-5 h-5 text-primary flex-shrink-0" />
@@ -424,21 +435,21 @@ export default function Home() {
               {[
                 {
                   icon: Heart,
-                  title: "Ambiente Acolhedor",
+                  title: 'Ambiente Acolhedor',
                   description:
-                    "Um espaço seguro onde você pode expressar pensamentos e sentimentos sem julgamentos ou pressões.",
+                    'Um espaço seguro onde você pode expressar pensamentos e sentimentos sem julgamentos ou pressões.',
                 },
                 {
                   icon: Target,
-                  title: "Processo Colaborativo",
+                  title: 'Processo Colaborativo',
                   description:
-                    "Trabalhamos juntos para encontrar estratégias que façam sentido para você e sua realidade.",
+                    'Trabalhamos juntos para encontrar estratégias que façam sentido para você e sua realidade.',
                 },
                 {
                   icon: Users,
-                  title: "Técnicas Adaptadas",
+                  title: 'Técnicas Adaptadas',
                   description:
-                    "Utilizo ferramentas comprovadas cientificamente, sempre respeitando seu ritmo e necessidades.",
+                    'Utilizo ferramentas comprovadas cientificamente, sempre respeitando seu ritmo e necessidades.',
                 },
               ].map((item, index) => (
                 <div key={index} className="card-dark card-hover text-center">
@@ -464,7 +475,7 @@ export default function Home() {
               </div>
 
               <h2 className="text-3xl sm:text-4xl font-bold text-muted-foreground mb-6">
-                O que esperar da{" "}
+                O que esperar da{' '}
                 <span className="text-primary">terapia comigo?</span>
               </h2>
 
@@ -600,34 +611,34 @@ export default function Home() {
               {[
                 {
                   icon: MessageCircle,
-                  title: "WhatsApp",
-                  description: "Resposta rápida e direta",
-                  contact: "(41) 98519‑9520",
-                  action: "Enviar mensagem",
-                  href: "https://wa.me/5541985199520?text=Olá, quero começar minha jornada! Gostaria de agendar uma consulta.",
+                  title: 'WhatsApp',
+                  description: 'Resposta rápida e direta',
+                  contact: '(41) 98519‑9520',
+                  action: 'Enviar mensagem',
+                  href: 'https://wa.me/5541985199520?text=Olá, quero começar minha jornada! Gostaria de agendar uma consulta.',
                   primary: true,
                 },
                 {
                   icon: Phone,
-                  title: "Telefone",
-                  description: "Atendimento personalizado",
-                  contact: "(41) 98519‑9520",
-                  action: "Ligar agora",
-                  href: "tel:+5541985199520",
+                  title: 'Telefone',
+                  description: 'Atendimento personalizado',
+                  contact: '(41) 98519‑9520',
+                  action: 'Ligar agora',
+                  href: 'tel:+5541985199520',
                 },
                 {
                   icon: Instagram,
-                  title: "Instagram",
-                  description: "Conteúdo e dicas",
-                  contact: "@psicami_",
-                  action: "Seguir perfil",
-                  href: "https://www.instagram.com/psicami_/",
+                  title: 'Instagram',
+                  description: 'Conteúdo e dicas',
+                  contact: '@psicami_',
+                  action: 'Seguir perfil',
+                  href: 'https://www.instagram.com/psicami_/',
                 },
               ].map((contact, index) => (
                 <div key={index} className="card-dark card-hover text-center">
                   <div
                     className={`w-12 h-12 rounded-lg mx-auto mb-4 flex items-center justify-center ${
-                      contact.primary ? "bg-primary" : "bg-gray-700"
+                      contact.primary ? 'bg-primary' : 'bg-gray-700'
                     }`}
                   >
                     <contact.icon className="w-6 h-6 text-input" />
@@ -642,10 +653,10 @@ export default function Home() {
                   </p>
 
                   <Button
-                    variant={contact.primary ? "ghost" : "secondary"}
+                    variant={contact.primary ? 'ghost' : 'secondary'}
                     asChild
                     className={
-                      contact.primary ? "btn-primary" : "btn-secondary w-full"
+                      contact.primary ? 'btn-primary' : 'btn-secondary w-full'
                     }
                   >
                     <Link
@@ -706,10 +717,14 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="flex flex-row items-center gap-2"
                     onClick={() =>
-                      window.gtag?.("event", "clique_instagram_footer_@_psicami", {
-                        event_category: "contato",
-                        event_label: "Footer Instagram",
-                      })
+                      window.gtag?.(
+                        'event',
+                        'clique_instagram_footer_@_psicami',
+                        {
+                          event_category: 'contato',
+                          event_label: 'Footer Instagram',
+                        }
+                      )
                     }
                   >
                     <Instagram className="w-4 h-4" />
@@ -726,9 +741,9 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() =>
-                window.gtag?.("event", "clique_instagram_footer_icon", {
-                  event_category: "contato",
-                  event_label: "Footer Instagram",
+                window.gtag?.('event', 'clique_instagram_footer_icon', {
+                  event_category: 'contato',
+                  event_label: 'Footer Instagram',
                 })
               }
             >
